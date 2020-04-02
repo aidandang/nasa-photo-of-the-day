@@ -1,24 +1,6 @@
-import React, {useState, useEffect} from "react";
-import axios from 'axios';
+import React from "react";
+import {useFetchData} from "./customHooks"
 import "./App.css";
-
-function useFetchData(arg) {
-  const [data, setData] = useState(null);
-  
-  useEffect(() => {
-    axios.get(arg)
-    .then(response => {
-      // get the data
-      setData(response.data);
-    })
-    .catch(err => {
-      // deal with the error in here
-      console.log("Error: CANNOT get the data!", err);
-    })
-  }, [arg])
-
-  return data 
-}
 
 // The parent component
 function App() {
