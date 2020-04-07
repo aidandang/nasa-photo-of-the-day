@@ -1,6 +1,6 @@
 import React from "react";
 import {useFetchData} from "./customHooks";
-import {WrapperDiv, StyleH1} from "./customStyles";
+import {WrapperDiv, StyleH1, LoadingDiv, StylePara} from "./customStyles";
 
 // The parent component
 function App() {
@@ -11,10 +11,11 @@ function App() {
     <div className='App'>
       {!data 
         ? 
-          <p>Loading...</p> 
+          <LoadingDiv>Loading...</LoadingDiv>
         : 
-          <WrapperDiv type={`${data.url}`}>
+          <WrapperDiv type={`${data.hdurl}`}>
             <StyleH1>Astronomy Picture of the Day by NASA</StyleH1>
+            <StylePara>{data.explanation}</StylePara>
           </WrapperDiv>
       }
     </div>
