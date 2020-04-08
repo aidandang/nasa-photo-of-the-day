@@ -1,8 +1,14 @@
 import React from "react";
 import {useFetchData} from "./customHooks";
-import {WrapperDiv, StyleH1, LoadingDiv, StylePara} from "./customStyles";
+import {
+  LoadingDiv,
+  WrapperDiv
+} from "./customStyles";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import MainContainer from "./components/MainContainer";
 
-// The parent component
+// The App component
 function App() {
   const apiAddress = 'https://api.nasa.gov/planetary/apod?api_key=R9dCmyw3hwyS2n9ubgAbWnecZpFf6fUZEDkK8Zdm';
   const data = useFetchData(apiAddress);
@@ -14,8 +20,9 @@ function App() {
           <LoadingDiv>Loading...</LoadingDiv>
         : 
           <WrapperDiv type={`${data.hdurl}`}>
-            <StyleH1>Astronomy Picture of the Day by NASA</StyleH1>
-            <StylePara>{data.explanation}</StylePara>
+            <Header date={data.date} />
+            <MainContainer title={data.title} explanation={data.explanation} />
+            <Footer copyright={data.copyright} />
           </WrapperDiv>
       }
     </div>
