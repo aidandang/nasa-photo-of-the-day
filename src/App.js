@@ -8,9 +8,12 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import MainContainer from "./components/MainContainer";
 
+const secret = process.env.REACT_APP_APOD_API_KEY;
+console.log(secret);
+
 // The App component
 function App() {
-  const apiAddress = 'https://api.nasa.gov/planetary/apod?api_key=R9dCmyw3hwyS2n9ubgAbWnecZpFf6fUZEDkK8Zdm';
+  const apiAddress = `https://api.nasa.gov/planetary/apod?api_key=${secret}`;
   const data = useFetchData(apiAddress);
 
   return (
